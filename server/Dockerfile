@@ -1,20 +1,18 @@
 # 1️⃣ Билдим клиент
 FROM node:20 AS builder
-WORKDIR /app/client
-COPY ./client/package*.json ./
-RUN npm ci
-COPY ./client ./
-RUN npm run build  # билд уходит в default: client/dist
+WORKDIR /app
+COPY ./client ./client
+COPY ./server ./server
+RUN cd client && npm ci && npm run build && ls -la ../server/dist
 
 # 2️⃣ Сервер + статика
 FROM node:20
-WORKDIR /app/server
+WORKDIR /app
 COPY ./server/package*.json ./
 RUN npm install --omit=dev
-COPY ./server ./
-
-# Копируем готовый билд React
-COPY --from=builder /app/client/dist ./dist
+COPY ./server ./server
+# Берём готовый билд из server/dist
+COPY --from=builder /app/server/dist ./server/dist
 
 EXPOSE 3005
-CMD ["node", "index.js"]
+CMD ["node", "server/index.js"]
