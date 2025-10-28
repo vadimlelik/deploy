@@ -28,10 +28,10 @@ app.use('/api/v1/auth', authRouter)
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // «Ловим» все маршруты React SPA
-app.get('*', (req, res) => {
-	if (req.path.startsWith('/api/')) {
-		return res.status(404).json({ message: 'API route not found' })
-	}
+app.use(express.static(path.join(__dirname, 'dist')))
+
+// SPA fallback для всех GET-запросов, которые не совпали с API
+app.get(/^(?!\/api).*/, (req, res) => {
 	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
