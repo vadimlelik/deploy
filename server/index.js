@@ -19,15 +19,14 @@ app.use(
 app.use(express.json())
 app.use(cookieParser())
 
+app.use('/api/v1/posts', postRouter)
+app.use('/api/v1/auth', authRouter)
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // «Ловим» все маршруты React SPA
 app.use((req, res) => {
 	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
-
-app.use('/api/v1/posts', postRouter)
-app.use('/api/v1/auth', authRouter)
 
 const start = async () => {
 	await mongoose.connect(process.env.MONGO_URI)
