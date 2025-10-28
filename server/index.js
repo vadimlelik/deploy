@@ -21,10 +21,14 @@ app.use(cookieParser())
 
 app.use('/api/v1/posts', postRouter)
 app.use('/api/v1/auth', authRouter)
+
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // «Ловим» все маршруты React SPA
-app.use((req, res) => {
+app.get('*', (req, res) => {
+	if (req.path.startsWith('/api/')) {
+		return res.status(404).json({ message: 'API route not found' })
+	}
 	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
