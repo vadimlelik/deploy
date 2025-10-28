@@ -1,7 +1,7 @@
 # 1️⃣ Билдим клиент
 FROM node:20 AS builder
 WORKDIR /app
-COPY ../client ./client
+COPY ./client ./client
 RUN cd client && npm install && npm run build
 
 # 2️⃣ Сервер + статика
