@@ -5,8 +5,10 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { postRouter } from './route/post.router.js'
 import { authRouter } from './route/auth.router.js'
-import path from 'path'
-const __dirname = path.resolve()
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 dotenv.config()
 const app = express()
 
