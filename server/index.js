@@ -28,7 +28,6 @@ app.use('/api/v1/auth', authRouter)
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // «Ловим» все маршруты React SPA
-app.use(express.static(path.join(__dirname, 'dist')))
 
 // SPA fallback для всех GET-запросов, которые не совпали с API
 app.get(/^(?!\/api).*/, (req, res) => {
