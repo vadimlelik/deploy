@@ -22,13 +22,9 @@ app.use(
 )
 app.use(express.json())
 app.use(cookieParser())
+
 app.use(express.static(join(__dirname, 'dist')))
 
-console.log(join(__dirname, 'dist'))
-
-// «Ловим» все маршруты React SPA
-
-// SPA fallback для всех GET-запросов, которые не совпали с API
 app.get(/^(?!\/api).*/, (req, res) => {
 	res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
