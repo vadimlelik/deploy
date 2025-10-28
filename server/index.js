@@ -30,9 +30,9 @@ app.use(express.static(path.join(__dirname, 'dist')))
 // «Ловим» все маршруты React SPA
 
 // SPA fallback для всех GET-запросов, которые не совпали с API
-app.get(/^(?!\/api).*/, (req, res) => {
-	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
-})
+// app.get(/^(?!\/api).*/, (req, res) => {
+// 	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+// })
 
 const start = async () => {
 	await mongoose.connect(process.env.MONGO_URI)
