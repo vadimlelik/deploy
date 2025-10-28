@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser'
 import { postRouter } from './route/post.router.js'
 import { authRouter } from './route/auth.router.js'
 import { fileURLToPath } from 'url'
-import { dirname } from 'path'
+import { dirname, join } from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -22,15 +22,15 @@ app.use(
 )
 app.use(express.json())
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(join(__dirname, 'dist')))
 
-console.log(path.join(__dirname, 'dist'))
+console.log(join(__dirname, 'dist'))
 
 // «Ловим» все маршруты React SPA
 
 // SPA fallback для всех GET-запросов, которые не совпали с API
 app.get(/^(?!\/api).*/, (req, res) => {
-	res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+	res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 
 app.use('/api/v1/posts', postRouter)
