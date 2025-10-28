@@ -3,8 +3,8 @@ version: '3.9'
 services:
   server:
     build:
-      context: . # 👈 Контекст сборки — текущая папка "app"
-      dockerfile: ./server/Dockerfile # 👈 Dockerfile внутри "server"
+      context: . # Контекст сборки — текущая папка "app"
+      dockerfile: ./server/Dockerfile # Dockerfile внутри "server"
     container_name: mern-server
     restart: always
     ports:
@@ -22,7 +22,7 @@ services:
     environment:
       MONGO_INITDB_DATABASE: testdb
       MONGO_INITDB_ROOT_USERNAME: user
-      MONGO_INITDB_ROOT_PASSWORD: mongopass,
+      MONGO_INITDB_ROOT_PASSWORD: mongopass
     restart: always
     volumes:
       - mongo_data:/data/db
