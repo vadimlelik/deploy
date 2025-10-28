@@ -2,7 +2,9 @@ version: '3.9'
 
 services:
   server:
-    build: ./server
+    build:
+      context: . # 👈 Контекст сборки — текущая папка "app"
+      dockerfile: ./server/Dockerfile # 👈 Dockerfile внутри "server"
     container_name: mern-server
     restart: always
     ports:
