@@ -11,6 +11,8 @@ services:
       - '80:3005'
     depends_on:
       - mongo
+    environment:
+      MONGO_URI: mongodb://user:mongopass@mongo:27017/testdb
 
   mongo:
     image: mongo:7
