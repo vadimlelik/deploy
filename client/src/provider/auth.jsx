@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 		setIsLoading(true)
 		try {
 			const response = await fetch(
-				'http://81.200.152.209/api/v1/auth/register',
+				'http://212.113.118.99s/api/v1/auth/register',
 				{
 					method: 'POST',
 					headers: {
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 	const login = async (email, password) => {
 		setIsLoading(true)
 		try {
-			const response = await fetch('http://81.200.152.209/api/v1/auth/login', {
+			const response = await fetch('http://212.113.118.99/api/v1/auth/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 	const logout = async () => {
 		setIsLoading(true)
 		try {
-			await fetch('http://81.200.152.209/api/v1/auth/logout', {
+			await fetch('http://212.113.118.99/api/v1/auth/logout', {
 				credentials: 'include',
 				method: 'POST',
 			})
@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
 	const getUser = async () => {
 		setIsLoading(true)
 		try {
-			const response = await fetch('http://81.200.152.209/api/v1/auth/me', {
+			const response = await fetch('http://212.113.118.99/api/v1/auth/me', {
 				credentials: 'include',
 			})
 			const data = await response.json()
