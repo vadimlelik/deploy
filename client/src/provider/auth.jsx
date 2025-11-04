@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 		setIsLoading(true)
 		try {
 			const response = await fetch(
-				'http://212.113.118.99s/api/v1/auth/register',
+				'http://212.113.118.99/api/v1/auth/register',
 				{
 					method: 'POST',
 					headers: {
